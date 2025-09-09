@@ -2,7 +2,7 @@ FROM python:3.12.11-slim-bookworm
 
 # Install system dependencies (libgl1 replaces libgl1-mesa-glx)
 RUN apt-get update && apt-get install -y \
-    git wget curl ffmpeg libglib2.0-0 libsm6 libxrender1 libxext6 libgl1 \
+    git wget curl ffmpeg libglib2.0-0 libsm6 libxrender1 libxext6 libgl1 nano \
     && rm -rf /var/lib/apt/lists/*
 
     
