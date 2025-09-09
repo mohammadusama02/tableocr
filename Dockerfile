@@ -19,9 +19,13 @@ RUN pip install --no-cache-dir \
     opencv-python \
     pandas \
     tabulate \
-    matplotlib
+    matplotlib \
+    jupyter \
+    notebook \
+    fastapi \
+    uvicorn
 
 WORKDIR /app
 COPY . /app
 
-CMD ["python", "app.py"]
+CMD ["python", "ocr_pipeline.py"]
