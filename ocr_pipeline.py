@@ -35,7 +35,7 @@ for page in ocr_result.pages:
 # Step 2: Layout detection (tables etc.)
 # -------------------------
 layout_model = LayoutDetection(model_name="PP-DocLayout_plus-L")
-layout_output = layout_model.predict("/content/page1.png", batch_size=1, layout_nms=True)
+layout_output = layout_model.predict("/data/page1.png", batch_size=1, layout_nms=True)
 
 table_boxes = []
 for res in layout_output:
@@ -78,7 +78,7 @@ print("DocTR model loaded.")
 
 
 import cv2
-img = cv2.imread("/content/page1.png")
+img = cv2.imread("/data/page1.png")
 table_contents = []
 for idx, tb in enumerate(table_boxes):
     x1, y1, x2, y2 = tb
