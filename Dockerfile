@@ -28,4 +28,4 @@ RUN pip install --no-cache-dir \
 WORKDIR /app
 COPY . /app
 
-CMD ["python", "ocr_pipeline.py"]
+CMD ["python", "api.py"]
