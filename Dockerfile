@@ -10,16 +10,16 @@ RUN apt-get update && apt-get install -y \
 # Python Dependencies (pinned versions)
 # -------------------------
 COPY wheels /wheels
-RUN pip install --no-cache-dir /wheels/*.whl    
+# RUN pip install --no-cache-dir /wheels/*.whl    
 
-# RUN pip install --no-cache-dir \
-#     python-doctr \
-#     paddleocr \
-#     paddlepaddle \
-#     opencv-python \
-#     pandas \
-#     tabulate \
-#     matplotlib
+RUN pip install --no-cache-dir \
+    python-doctr \
+    paddleocr \
+    paddlepaddle \
+    opencv-python \
+    pandas \
+    tabulate \
+    matplotlib
 
 WORKDIR /app
 COPY . /app
