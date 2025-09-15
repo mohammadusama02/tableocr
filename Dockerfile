@@ -1,5 +1,9 @@
 FROM python:3.12.11-slim-bookworm
 
+# Set environment variables in Docker
+ENV PADDLE_DISABLE_NETWORK=1
+ENV HF_HUB_OFFLINE=1
+
 # Install system dependencies (libgl1 replaces libgl1-mesa-glx)
 RUN apt-get update && apt-get install -y \
     poppler-utils git wget curl ffmpeg libglib2.0-0 libsm6 libxrender1 libxext6 libgl1 nano \

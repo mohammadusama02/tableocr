@@ -1,6 +1,7 @@
 # -------------------------
 # Imports
 # -------------------------
+import os
 import cv2
 import numpy as np
 import pandas as pd
@@ -8,6 +9,10 @@ from tabulate import tabulate
 from doctr.io import DocumentFile
 from doctr.models import ocr_predictor
 from paddleocr import PaddleOCR, LayoutDetection
+
+# Set offline mode
+os.environ['PADDLE_DISABLE_NETWORK'] = '1'
+os.environ['HF_HUB_OFFLINE'] = '1'
 
 
 # -------------------------
@@ -199,4 +204,20 @@ for item in merged:
         final_output.append("\n" + item["text"] + "\n")
 
 print(" ".join(final_output))
+
+
+
+
+# Layout detection (rows and columns layout in tables)
+from paddleocr import TableStructureRecognition
+
+def detect_table_layout(img):
+  model = TableStructureRecognition(model_name="SLANet")
+  output = model.predict(input=img, batch_size=1)
+  return output
+
+
+# Layout detection (text in tables)
+table_layout_coords = detect_table_layout(crop)[0]
+print(f"Detected {len(table_layout_coords)} layout boxes in table {idx+1}.")
 
